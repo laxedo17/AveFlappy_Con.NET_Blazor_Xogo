@@ -1,0 +1,53 @@
+<div class="border-left"></div>
+<!--Representa os elementos do xogo, o cal se basa no famoso Flappy Bird-->
+<!--Con tabindex facemos que o div poida ser enfocable -focusable- e facerlle focus-->
+<div class="contenedor-videoxogo" tabindex="0" @onclick="_xestorDoXogo.ComenzarXogo" @onkeyup="ManexarPulsacionTecla">
+    <div class="border-top"></div>
+    <!--O unico borde dentro do contenedor do xogo xa que os outros dous estan afectados por display-flex do body-->
+    <!--Mostra o firmamento, o ceo (cielo en castelan)-->
+    <div class="ceo">
+        <Paxaro Modelo="_xestorDoXogo.Paxaro" />
+    </div>
+    <!--Fin representacion do firmamento do xogo-->
+    <!--Representa o chan -suelo- do xogo-->
+    <div class="chan"></div>
+    <!--Fin representacion do chan (suelo)-->
+
+    @foreach (var tuberia in _xestorDoXogo.Tuberias)
+    {
+        <Tuberia Modelo="tuberia" />
+    }
+</div>
+<div class="border-right"></div>
+<!--Fin dos elementos do xogo-->
+
+@code {
+
+    XestorDoXogo _xestorDoXogo;
+
+    //instanciamos o obxeto XestorDoXogo usando este metodo
+    protected override void OnInitialized()
+    {
+        _xestorDoXogo = new XestorDoXogo();
+        _xestorDoXogo.LoopPrincipalCompletado += (o, e) => StateHasChanged();
+        //antes usabamos PropertyChanged pero houbo cambios
+        //agora simplemente rerenderizaremos cada 20 milisegundos
+        //sen avisar que que estamos chamando a varios componentes, Paxaro, Tuberia
+        //iso manten as cousas simples
+
+        //_xestorDoXogo.PropertyChanged += (o, e) => StateHasChanged();
+        //StateHasChanged causa que o elemente se re-renderize
+        //de non ser asi, cada vez que fagamos click
+        //o paxaro cae moitos espacios, moito mais que 2
+        //e non temos animacion
+    }
+
+    void ManexarPulsacionTecla(KeyboardEventArgs e)
+    {
+        //se pulsamos espacio chamamos ao metodo Saltar do obxecto Paxaro
+        if (e.Key == " ")
+        {
+            _xestorDoXogo.Saltar();
+        }
+    }
+}

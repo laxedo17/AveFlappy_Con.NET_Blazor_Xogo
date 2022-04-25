@@ -1,0 +1,13 @@
+<!--Inicio seccion Tuberia-->
+<div class="tuberia top" style="@_tuberiaTopCss"></div>
+<div class="tuberia" style="@_tuberiaAbaixoCss"></div>
+<!--Fin seccion Tuberia-->
+
+@code {
+    [Parameter] public TuberiaModel Modelo { get; set; }
+
+    string _tuberiaTopCss =>
+    "bottom: {Modelo.DistanciaDoChan + 430}px; left: {Modelo.DistanciaDaIzquierda}px";
+    string _tuberiaAbaixoCss =>
+    $"left: {Modelo.DistanciaDaIzquierda}px; bottom: {Modelo.DistanciaDoChan}px";
+}

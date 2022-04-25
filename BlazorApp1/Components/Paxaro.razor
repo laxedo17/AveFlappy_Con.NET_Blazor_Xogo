@@ -1,0 +1,13 @@
+<!--Mostra o paxaro protagonista que esta dentro do ceo-->
+<!--Coa arroba o que dicimos e algo como, o que ven despois e C#-->
+<div class="paxaro" style="@_paxaroCss"></div>
+<!--Fin de seccion do paxaro protagonista-->
+
+@code {
+    //non necesitamos acceder ao xestor do xogo, senon ao obxecto Paxaro
+    [Parameter] public PaxaroModel Modelo { get; set; }
+
+    //isto convirte un integer da clase Paxaro en parte dun string CSS
+    //ao cal referenciaremos directamente dende o div do paxaro
+    string _paxaroCss => $"bottom: {Modelo.DistanciaDoChan}px";
+}

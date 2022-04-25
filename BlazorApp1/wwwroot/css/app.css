@@ -1,0 +1,99 @@
+﻿body {
+    display: flex;
+    /*Con isto os border-left, border-right e border-top apilanse horizontalmente e non verticalmente*/
+}
+
+.contenedor-videoxogo {
+    /*Damoslle unha altura e ancho fixos*/
+    width: 500px;
+    height: 730px;
+    position: absolute;
+    left: 80px;
+    /*engadimos este borde no contenedor do xogo para deixar 80px de espacio para border-left*/
+}
+
+.border-left {
+    width: 80px;
+    height: 790px;
+    position: absolute;
+    background-color: white;
+    z-index: +2;
+}
+
+.border-right {
+    left: 580px;
+    width: 80px;
+    height: 790px;
+    position: absolute;
+    background-color: white;
+    z-index: +2;
+}
+
+.border-top {
+    width: 660px;
+    height: 60px;
+    position: absolute;
+    background-color: white;
+    z-index: +2;
+    top: -60px;
+    left: -80px;
+}
+
+.ceo {
+    background-image: url('../imaxes/af-xogo-fondo.png');
+    width: 500px;
+    height: 580px;
+    /*a altura do ceo e do chan sumaranse a altura do contenedor do videoxogo*/
+    position: absolute;
+}
+
+.chan {
+    background-image: url('../imaxes/chan-fondo.png');
+    width: 500px;
+    height: 150px;
+    position: absolute;
+    top: 580px;
+    z-index: +1;
+    /*O chan estara unha capa por enriba do resto, co cal as tuberias quedan escondidas detras*/
+}
+
+.paxaro {
+    background-image: url('../imaxes/flappy-ave.png');
+    /*Damoslle tamen unha altura e ancho fixos*/
+    width: 60px;
+    height: 45px;
+    left: 220px;
+    /*un oco de 220px que fara que a ave apareza no medio da pantalla*/
+    position: absolute;
+}
+
+.tuberia {
+    background-image: url('../imaxes/aveflappy-tuberia.png');
+    width: 60px;
+    height: 300px;
+    position: absolute;
+}
+
+/*Duas clases CSS, tuberia e top*/
+.tuberia.top {
+    transform: rotate(180deg);
+}
+
+#blazor-error-ui {
+    background: lightyellow;
+    bottom: 0;
+    box-shadow: 0 -1px 2px rgba(0, 0, 0, 0.2);
+    display: none;
+    left: 0;
+    padding: 0.6rem 1.25rem 0.7rem 1.25rem;
+    position: fixed;
+    width: 100%;
+    z-index: 1000;
+}
+
+#blazor-error-ui .dismiss {
+    cursor: pointer;
+    position: absolute;
+    right: 0.75rem;
+    top: 0.5rem;
+}
